@@ -4,10 +4,9 @@ from __future__ import unicode_literals
 
 from decimal import Decimal
 from django.conf import settings
-# import django.contrib.postgres.fields.jsonb
+import django.contrib.postgres.fields.jsonb
 from django.db import migrations, models
 import django.db.models.deletion
-from django_mysql.models import JSONField
 import uuid
 
 
@@ -501,8 +500,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('language', models.CharField(blank=True, max_length=100, null=True, verbose_name='Language')),
-                # ('language_file', django.contrib.postgres.fields.jsonb.JSONField()),
-                ('language_file', JSONField()),
+                ('language_file', django.contrib.postgres.fields.jsonb.JSONField()),
                 ('create_date', models.DateTimeField(blank=True, null=True)),
                 ('edit_date', models.DateTimeField(blank=True, null=True)),
             ],
@@ -841,8 +839,7 @@ class Migration(migrations.Migration):
                 ('tables_api_token', models.CharField(blank=True, max_length=255, null=True)),
                 ('activity_api_token', models.CharField(blank=True, max_length=255, null=True)),
                 ('privacy_disclaimer_accepted', models.BooleanField(default=False)),
-                # ('filter', django.contrib.postgres.fields.jsonb.JSONField(blank=True, null=True)),
-                ('filter', JSONField(blank=True, null=True)),                
+                ('filter', django.contrib.postgres.fields.jsonb.JSONField(blank=True, null=True)),
                 ('create_date', models.DateTimeField(blank=True, null=True)),
                 ('edit_date', models.DateTimeField(blank=True, null=True)),
                 ('countries', models.ManyToManyField(blank=True, related_name='countries', to='workflow.Country', verbose_name='Accessible Countries')),
@@ -982,8 +979,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('workflowlevel2_id', models.IntegerField(default=0, verbose_name='ID to be Sorted')),
-                # ('sort_array', django.contrib.postgres.fields.jsonb.JSONField(blank=True, null=True)),
-                ('sort_array', JSONField(blank=True, null=True)),
+                ('sort_array', django.contrib.postgres.fields.jsonb.JSONField(blank=True, null=True)),
                 ('create_date', models.DateTimeField(blank=True, null=True)),
                 ('edit_date', models.DateTimeField(blank=True, null=True)),
                 ('workflowlevel1', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='workflow.WorkflowLevel1')),
